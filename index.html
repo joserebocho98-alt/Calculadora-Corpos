@@ -165,7 +165,7 @@
     <div class="subtitle">Rifle • SMG • Pistola</div>
 
     <div class="layout">
-      <!-- ESQUERDA: INPUTS -->
+      <!-- ESQUERDA -->
       <div class="card">
         <h2>Crafts</h2>
 
@@ -190,7 +190,7 @@
         </div>
       </div>
 
-      <!-- DIREITA: TOTAIS -->
+      <!-- DIREITA -->
       <div class="card">
         <h2>Materiais Totais</h2>
 
@@ -207,7 +207,8 @@
       </div>
     </div>
 
-    <div class="logo">BELLA CRUZ</div>
+    <!-- LOGO ALTERADO -->
+    <div class="logo">VAGOS</div>
   </div>
 
   <script>
@@ -233,21 +234,17 @@
         totalAluminio += receitas[id].aluminio * n;
       });
 
-      document.getElementById("total_crafts").innerText = totalCrafts.toLocaleString();
-      document.getElementById("pecas").innerText = totalPecas.toLocaleString();
-      document.getElementById("sucata").innerText = totalSucata.toLocaleString();
-      document.getElementById("aluminio").innerText = totalAluminio.toLocaleString();
+      document.getElementById("total_crafts").innerText = totalCrafts;
+      document.getElementById("pecas").innerText = totalPecas;
+      document.getElementById("sucata").innerText = totalSucata;
+      document.getElementById("aluminio").innerText = totalAluminio;
 
-      // Outputs (corpos feitos = nº de crafts)
-      document.getElementById("out_rifle").innerText = (Number(document.getElementById("rifle").value) || 0).toLocaleString();
-      document.getElementById("out_smg").innerText = (Number(document.getElementById("smg").value) || 0).toLocaleString();
-      document.getElementById("out_pistola").innerText = (Number(document.getElementById("pistola").value) || 0).toLocaleString();
+      document.getElementById("out_rifle").innerText = document.getElementById("rifle").value || 0;
+      document.getElementById("out_smg").innerText = document.getElementById("smg").value || 0;
+      document.getElementById("out_pistola").innerText = document.getElementById("pistola").value || 0;
     }
 
-    document.querySelectorAll("input").forEach(i => {
-      i.addEventListener("input", calcular);
-      i.addEventListener("change", calcular);
-    });
+    document.querySelectorAll("input").forEach(i => i.addEventListener("input", calcular));
 
     document.getElementById("resetBtn").addEventListener("click", () => {
       campos.forEach(id => document.getElementById(id).value = 0);
